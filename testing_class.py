@@ -1,21 +1,22 @@
 from matrix_class_final import Matrix
 import re
 
+assert hasattr(Matrix, 'multiply'), "something went wrong"
+
 
 def ask_user(message):
     print(message)
     matrix = []
     while True:
-        try:
-            row = input()
-            if row != '' and re.match("^[0-9 \r\n]+$", row):
-                try:
-                    matrix.append(list(map(int, row.split(' '))))
-                except ValueError:
-                    print('invalid character, try again')
-                    row = input()
-            else:
-                return matrix
+        row = input()
+        if row != '' and re.match("^[0-9 \r\n]+$", row):
+            try:
+                matrix.append(list(map(int, row.split(' '))))
+            except ValueError:
+                print('invalid character, try again')
+                row = input()
+        else:
+            return matrix
 
 
 def main():
